@@ -27,3 +27,23 @@ jobs:
           path: |
             Savar_Resume_Campus.pdf
             Savar_Resume_OffCampus.pdf
+
+      - name: Checkout Website Repository
+        uses: actions/checkout@v4
+        with:
+          repository: savar95x/savar95x.github.io
+          token: ${{ secrets.WEBSITE_SYNC_TOKEN }}
+          path: website-repo
+
+      - name: Push PDF to Website
+        run: |
+          # Copy the off-campus resume into the Hugo static folder
+          cp Savar_Resume_OffCampus.pdf website-repo/static/resume.pdf
+          
+          cd website-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add static/resume.pdf
+          git commit -m "chore: auto-sync latest resume PDF" || echo "No changes to commit"
+          git push
