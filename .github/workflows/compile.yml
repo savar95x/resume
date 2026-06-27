@@ -37,16 +37,13 @@ jobs:
 
       - name: Push PDF to Website
         run: |
-          # Ensure the static directory exists (Git ignores empty directories)
-          mkdir -p website-repo/static
-          
-          # Copy the off-campus resume into the Hugo static folder
-          cp Savar_Resume_OffCampus.pdf website-repo/static/resume.pdf
+          # Copy the off-campus resume directly into the root of the website repo
+          cp Savar_Resume_OffCampus.pdf website-repo/savar_resume.pdf
           
           cd website-repo
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          git add static/resume.pdf
+          git add savar_resume.pdf
           git commit -m "chore: auto-sync latest resume PDF" || echo "No changes to commit"
           git push
