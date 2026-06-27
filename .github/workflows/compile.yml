@@ -37,6 +37,9 @@ jobs:
 
       - name: Push PDF to Website
         run: |
+          # Ensure the static directory exists (Git ignores empty directories)
+          mkdir -p website-repo/static
+          
           # Copy the off-campus resume into the Hugo static folder
           cp Savar_Resume_OffCampus.pdf website-repo/static/resume.pdf
           
