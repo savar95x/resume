@@ -1,0 +1,29 @@
+name: Auto-Compile Resume
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build_pdfs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install TeX Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended
+
+      - name: Build PDFs using Makefile
+        run: make
+
+      - name: Upload PDFs to GitHub Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Savar_Resumes
+          path: |
+            Savar_Resume_Campus.pdf
+            Savar_Resume_OffCampus.pdf
