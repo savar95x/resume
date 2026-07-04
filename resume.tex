@@ -132,11 +132,20 @@
 %-----------SKILLS-----------
 \section{Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-    \textbf{Languages}{: JavaScript, Python, C++, C, Bash, SQL } \\
-    \textbf{Infrastructure and Tools}{: Node.js, React, FastAPI, PostgreSQL, DynamoDB, Redis, Docker, Git, Linux} \\
-    \textbf{Concepts and Protocols}{: OAuth 2.0, SSO, SRP, REST APIs, Computer Networks, Multithreading, System Design} \\
-    }}
+    \ifcampus
+        \small{\item{
+        \textbf{Languages}{: JavaScript, Python, C++, C, Bash, SQL} \\
+        \textbf{Infra and Tools}{: Node.js, React, Vite, FastAPI, AWS (EC2), PostgreSQL, DynamoDB, Redis, Docker, Git, Linux} \\
+        \textbf{Concepts and Protocols}{: OAuth 2.0, PKCE, JWT, SSO, SRP, RBAC, REST APIs, Multithreading, System Design} \\
+        }}
+    \else
+        \small{\item{
+        \textbf{Languages}{: JavaScript, Python, C++, C, Bash, SQL} \\
+        \textbf{Frameworks \& Tools}{: Node.js, React, Vite, FastAPI, Docker, Git, Linux} \\
+        \textbf{Cloud \& Databases}{: AWS (EC2), DynamoDB, PostgreSQL, Redis} \\
+        \textbf{Architecture \& Security}{: OAuth 2.0, PKCE, JWT, SSO, SRP, RBAC, REST APIs, Multithreading, System Design} \\
+        }}
+    \fi
  \end{itemize}
 
 %-----------EXPERIENCE-----------
